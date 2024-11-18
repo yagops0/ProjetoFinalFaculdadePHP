@@ -1,10 +1,9 @@
 <?php 
     include 'conecta.inc';
-    //include 'carregaFoto.php';
     $ganhador = '';
+    $valorBonus = 0.0;
     $func = $_POST["func"];
     $valor = $_POST["valor"];
-    $arquivoF = $_FILES['foto'];
     $mes = Date("m");
     $ano = Date("Y");
 
@@ -57,22 +56,24 @@
     function calcularValorBonus($valorVenda): float{
         $valorBonus = 0.0;
         if($valorVenda <= 500.0){
-            $valorBonus += ($valorVenda * (1 / 100));
+            $valorBonus = $valorVenda * (1 / 100);
             return $valorBonus;
         }
         elseif($valorVenda >= 501.0 && $valorVenda <= 3000){
-            $valorBonus += ($valorVenda * (5 / 100));
+            $valorBonus = $valorVenda * (5 / 100);
             return $valorBonus;
         }
         elseif($valorVenda >= 3001 && $valorVenda <= 10000){
-            $valorBonus += ($valorVenda * (10 / 100));
+            $valorBonus = $valorVenda * (10 / 100);
             return $valorBonus;
         }
         else{
-            $valorBonus += ($valorVenda * (15 / 100));
+            $valorBonus = $valorVenda * (15 / 100);
             return $valorBonus;
         }
     }
+
+    $valorBonus = calcularValorBonus($valor);
 
     function receberFoto(){
         $dir = "img/";
@@ -87,7 +88,7 @@
 
 
         if(move_uploaded_file($arquivo['tmp_name'], "$dir/".$arquivo['name'])){
-            $imagem = "img/ ".$arquivo["name"];
+            $imagem = "img/".$arquivo["name"];
             echo "<img src=\"$imagem\"><br>";
             
             return $imagem;
@@ -102,7 +103,32 @@
         }
     }
 
-    echo receberFoto();
+    $ganhador = receberFoto();
+
+    if($ganhador != null || $valorBonus != 0.0 || $func != null || $valor != null || $mesNome != null || $ganhador != null){
+        $resul = mysqli_query($con, "Select * from tbfuncmes where mes = '$mesNome'
+        and ano = '$ano'") or die ("Erro na consulta");
+        $total = mysqli_num_rows($resul);
+
+        if($total < 1)
+        {
+            $sql= "Insert into tbfuncmes(nome, vrvenda, vrbonus, caminhoimg, mes, ano) values ('$func', '$valor', '$valorBonus', '$ganhador', '$mesNome', '$ano')";
+            mysqli_query($con, $sql) or die ("Erro inclusão");
+            echo "<script> alert ('Funcionário do mês cadastrado com sucesso!');
+            history.back();
+            </script>";
+        }
+        else
+        {
+            echo "<script> alert ('Já foi cadastrado um funcionário para esse mês!');
+            history.back();
+            </script>";
+        }
+
+    }
+    else{
+        echo "<script>alert('Ocorreu um erro ao inserir o dado.')</script>";
+    }
 
 
 ?>
