@@ -1,8 +1,10 @@
 <?php 
     include 'conecta.inc';
-    $ganhador = $_POST["ganhador"];
+    //include 'carregaFoto.php';
+    $ganhador = '';
     $func = $_POST["func"];
     $valor = $_POST["valor"];
+    $arquivoF = $_FILES['foto'];
     $mes = Date("m");
     $ano = Date("Y");
 
@@ -72,6 +74,35 @@
         }
     }
 
+    function receberFoto(){
+        $dir = "img/";
+
+        $arquivo = $_FILES['foto'];
+
+        $nome = $_FILES['foto']['name'];
+        $tipo = $_FILES['foto']['type'];
+        $tamanho = $_FILES['foto']['size'];
+        $temporario = $_FILES['foto']['tmp_name'];
+        $erro = $_FILES['foto']['error'];
+
+
+        if(move_uploaded_file($arquivo['tmp_name'], "$dir/".$arquivo['name'])){
+            $imagem = "img/ ".$arquivo["name"];
+            echo "<img src=\"$imagem\"><br>";
+            
+            return $imagem;
+            
+        }
+        else
+        {
+            return "<script>
+                alert('Erro ao enviar o arquivo. Tente novamente');
+                history.back();
+            ";
+        }
+    }
+
+    echo receberFoto();
 
 
 ?>
