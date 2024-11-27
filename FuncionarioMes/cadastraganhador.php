@@ -8,7 +8,7 @@
     $ano = Date("Y");
 
     function mesExtenso($mes){
-        $mesExtenso = '';
+        $mesExtenso = "";
         switch($mes){
             case 1:
                 $mesExtenso = "Janeiro";
