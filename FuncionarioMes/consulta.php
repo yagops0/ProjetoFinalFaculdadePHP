@@ -82,7 +82,9 @@
                         <option value="11">Novembro</option>
                         <option value="12">Dezembro</option>
                     </select>
-
+                    
+                    <br>
+                    
                     <button type="submit" class="btn btn-primary">Consulta Mês/Ano</button>
                 </form>
             </div>
