@@ -51,7 +51,7 @@
                         
                         while($row = mysqli_fetch_array($resul)){
 
-                            echo '<tr class="teste"><th><img src='.$row['caminhoimg'].'></th></tr>';
+                            echo '<tr class="teste"><th><center><img src='.$row['caminhoimg'].'></center></th></tr>';
                             echo "<tr><th><b>NOME</b></th> <th> <b>MÊS</b></th> <th> <b>ANO</b></th> <th> <b>VALOR VENDA</b></th> <th><b>VALOR BÔNUS</b></th></tr>";
                             
                             echo '<tr><td>' .$row['nome']. '</td>';

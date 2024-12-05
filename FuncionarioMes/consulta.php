@@ -48,6 +48,7 @@
                 </form>
 
                 <form method="post" action="consultamesano.php">
+                    <br><br>
                     <label for="nome"><b>Por Mês/Ano</b></label>
                     <br>
                     <select name="ano" id="ano" class="custom-select mr-sm-2">
@@ -69,20 +70,21 @@
                     
                     <select name="mes" id="mes" class="custom-select mr-sm-2">
                         <option selected><<< Escolha o Mês >>></option>
-                        <option value="1">Janeiro</option>
-                        <option value="2">Fevereiro</option>
-                        <option value="3">Março</option>
-                        <option value="4">Abril</option>
-                        <option value="5">Maio</option>
-                        <option value="6">Junho</option>
-                        <option value="7">Julho</option>
-                        <option value="8">Agosto</option>
-                        <option value="9">Setembro</option>
-                        <option value="10">Outubro</option>
-                        <option value="11">Novembro</option>
-                        <option value="12">Dezembro</option>
+                        <option value="Janeiro">Janeiro</option>
+                        <option value="Fevereiro">Fevereiro</option>
+                        <option value="Março">Março</option>
+                        <option value="Abril">Abril</option>
+                        <option value="Maio">Maio</option>
+                        <option value="Junho">Junho</option>
+                        <option value="Julho">Julho</option>
+                        <option value="Agosto">Agosto</option>
+                        <option value="Setembro">Setembro</option>
+                        <option value="Outubro">Outubro</option>
+                        <option value="Novembro">Novembro</option>
+                        <option value="Dezembro">Dezembro</option>
                     </select>
                     
+                    <br>
                     <br>
                     
                     <button type="submit" class="btn btn-primary">Consulta Mês/Ano</button>
