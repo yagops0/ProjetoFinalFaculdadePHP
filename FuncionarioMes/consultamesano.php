@@ -24,18 +24,18 @@ use function PHPSTORM_META\type;
     //echo gettype($ano);
     $mes = $_POST["mes"];
 
-    function converterParaInt($numeroStr){
-        return intval($numeroStr);
-    }
+    // function converterParaInt($numeroStr){
+    //     return intval($numeroStr);
+    // }
 
-    $anoInt = converterParaInt($ano);
-    echo gettype($anoInt);
+    // $anoInt = converterParaInt($ano);
+    // echo gettype($anoInt);
       
     if(ISSET($ano) && ISSET($mes)){
-        $resul = mysqli_query($con, "Select * from tbfuncmes where ano = $anoInt and mes = '$mes'");
+        $resul = mysqli_query($con, "Select * from tbfuncmes where ano = '$ano' and mes = '$mes'");
     }
-    else if(ISSET($ano)){
-        $resul = mysqli_query($con, "Select * from tbfuncmes where ano = $anoInt");
+    else if(ISSET($ano) && !ISSET($mes)){
+        $resul = mysqli_query($con, "Select * from tbfuncmes where ano = '$ano'");
     }
         
 
