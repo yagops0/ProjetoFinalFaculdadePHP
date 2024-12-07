@@ -34,9 +34,6 @@ use function PHPSTORM_META\type;
     if(ISSET($ano) && ISSET($mes)){
         $resul = mysqli_query($con, "Select * from tbfuncmes where ano = '$ano' and mes = '$mes'");
     }
-    else if(ISSET($ano) && !ISSET($mes)){
-        $resul = mysqli_query($con, "Select * from tbfuncmes where ano = '$ano'");
-    }
         
 
     $total = mysqli_num_rows($resul);
