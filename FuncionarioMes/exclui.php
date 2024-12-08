@@ -45,6 +45,8 @@
 
 <body>
     <div class="container">
+        <br>
+        <button> <a href="javascript: history.back()">Voltar </a> </button>
         <div class="row">
             <div class="col-lg-6 mx-auto">
                 <h2 class="page-section-heading text-center text-uppercase text-secondary">EXCLUSÃO</h2>

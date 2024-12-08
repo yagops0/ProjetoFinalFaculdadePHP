@@ -105,7 +105,7 @@
 
     $ganhador = receberFoto();
 
-    if($ganhador != null || $valorBonus != 0.0 || $func != null || $valor != null || $mesNome != null || $ganhador != null){
+    if($ganhador != null || $valorBonus != 0.0 || $func != null || $valor != null || $mesNome != null){
         $resul = mysqli_query($con, "Select * from tbfuncmes where mes = '$mesNome'
         and ano = '$ano'") or die ("Erro na consulta");
         $total = mysqli_num_rows($resul);

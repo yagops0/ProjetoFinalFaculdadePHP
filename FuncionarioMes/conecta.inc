@@ -6,7 +6,7 @@
 
     $con = mysqli_connect($servidor, $usuario, $senha, $banco) or die("Erro conexao");
 
-    echo "conexao ok";
+    //echo "conexao ok";
     mysqli_set_charset($con,"utf8");
 
 
