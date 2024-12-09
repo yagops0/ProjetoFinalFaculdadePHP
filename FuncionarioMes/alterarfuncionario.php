@@ -28,19 +28,6 @@
             var foto = document.getElementById("foto").value
 
 
-            // if (valor == "") {
-            //     alert('Escolha o valor');
-            //     return false;
-            // }
-
-            // if (foto == "") {
-            //     alert("É Obrigatório Anexar uma Foto!");
-            //     return false;
-            // }
-
-
-
-
             frm.submit();
         }
 
@@ -70,6 +57,7 @@
 </head>
 
 <body>
+    
     <div class="container">
         <br>
         <button> <a href="javascript: history.back()">Voltar </a> </button>
@@ -87,6 +75,8 @@
                             include 'conecta.inc';
                             $codigo = $_POST["codigo"];
 
+                            echo "<input type='hidden' name='codigo' id='codigo' value='$codigo'>";
+
                             $resul = mysqli_query($con, "Select caminhoimg from tbfuncmes where codigo = '$codigo'");
 
                             $total = mysqli_num_rows($resul);
@@ -100,10 +90,9 @@
                                 location.href = 'cadastro.php'</script>";
                             }
                             else{
-                                echo "<img src='$caminho'>";    
+                                echo "<img src='$caminho' name='ganhador' id='ganhador' class='img-fluid' class='rounded float-left'>";    
                             }
                         ?>
-                        <!-- <img src="img/moldura.png" name="ganhador" id="ganhador" class="img-fluid"class="rounded float-left" alt="Ganhador" width="60%" height="60%"> <br> <br> -->
 
                         <div class="file-field input-field col s8">
                             <div class="btn btn-primary btn-sm">
@@ -119,30 +108,28 @@
 
 
                 <div class="col-lg-7 mx-auto">
+                            <div class="form-group">
+                                <label for="nome"><b>Nome:</b></label>
+                                <input type="text" class="form-control" id="nome" name="nome" aria-describedby="nomeHelp" placeholder="Nome atualizado" required >
+                                <small id="nomeHelp" class="form-text text-muted">Digite o nome atualizado</small>
+                            </div>
 
-                    <div class="form-group">
-                        <label for="nome"><b>Nome:</b></label>
-                        <input type="text" class="form-control" id="nome" name="nome" aria-describedby="nomeHelp" placeholder="Nome atualizado" required >
-                        <small id="nomeHelp" class="form-text text-muted">Digite o nome atualizado</small>
-                    </div>
+                            <div class="form-group">
+                            <div class="form-text">
+                                <b>Atualizar o valor da venda(o valor de bônus será mudado automaticamente):</b>
+                                <input type="text" class="form-control w-25" id="valor" name="valor"
+                                    placeholder="Valor Vendas" required="required"
+                                    data-validation-required-message="Por favor digite o valor de venda"
+                                    onkeypress="mascara(this, moeda)" maxlength="10">
+                            </div>
 
-                    <div class="form-group">
-                        <div class="form-text">
-                            <b>Atualizar o valor da venda(o valor de bônus será mudado automaticamente):</b>
-                            <input type="text" class="form-control w-25" id="valor" name="valor"
-                                placeholder="Valor Vendas" required="required"
-                                data-validation-required-message="Por favor digite o valor de venda"
-                                onkeypress="mascara(this, moeda)" maxlength="10">
+                            <br><br>
+
+
+
+                            <button class="btn btn-primary" type="submit">Atualizar</button>
+
                         </div>
-
-                        <br><br>
-
-
-
-                        <button class="btn btn-primary btn-xl" id="atualizar" name="atualizar"
-                            type="submit">Atualizar</button>
-
-                    </div>
                 </div>
         </form>
     </div>

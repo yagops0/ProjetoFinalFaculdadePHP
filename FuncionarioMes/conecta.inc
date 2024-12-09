@@ -1,7 +1,7 @@
 <?php
-    $servidor = "localhost";
-    $usuario = "root";
-    $senha = "Yps@01200520";
+    $servidor = "";
+    $usuario = "";
+    $senha = "";
     $banco = "dbempresa";
 
     $con = mysqli_connect($servidor, $usuario, $senha, $banco) or die("Erro conexao");

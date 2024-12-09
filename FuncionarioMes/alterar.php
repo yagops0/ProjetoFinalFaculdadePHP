@@ -6,8 +6,9 @@
     $valor = $_POST["valor"];
     $codigo = $_POST["codigo"];
 
+    
 
-
+   
     function calcularValorBonus($valorVenda): float{
         $valorBonus = 0.0;
         if($valorVenda <= 500.0){
@@ -58,17 +59,23 @@
         }
     }
 
-    $ganhador = receberFoto();
-
+    if ($_FILES['foto']['name']) {
+        $ganhador = receberFoto();
+    }
     
 
     if($ganhador != null || $valorBonus != 0.0 || $funcNome != null || $valor != null){
         $resul = mysqli_query($con, "Select * from tbfuncmes where codigo='$codigo'") or die ("Erro na consulta");
         $total = mysqli_num_rows($resul);
 
-        if($total == 1)
+        if($ganhador == null){
+            $ganhador = $row["caminhoimg"];
+        }
+
+        if($total != 0)
         {
-            $sql= "Update tbfuncmes set nome='$funcNome', vrvenda='$valor', caminhoimg='$ganhador' where codigo='$codigo'";
+            
+            $sql= "Update tbfuncmes set nome='$funcNome', vrvenda='$valor', vrbonus='$valorBonus', caminhoimg='$ganhador' where codigo='$codigo'";
             mysqli_query($con, $sql) or die ("Erro inclusão");
             echo "<script> alert ('Dados do funcionário alterados com sucesso!');
             history.back();

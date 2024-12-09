@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="css/estilo.css">
 </head>
 <body>
+
+    
     <div class="container">
         <br>
         <button> <a href="javascript: history.back()">Voltar </a> </button>
@@ -21,7 +23,7 @@
                             <b>Escolha um funcionário para atualizar os dados</b>
                             <br>
                             <select name="codigo" id="codigo" class="custom-select mr-sm-2">
-                                <option selected><<< Escolha um Funcionário >>></option>
+                                <option selected value=""><<< Escolha um Funcionário >>></option>
                                 <?php
                                     include 'conecta.inc';
                                     $resul = mysqli_query($con, "Select codigo, nome from tbfuncmes");
@@ -40,7 +42,7 @@
 
                                     mysqli_close($con);
                                 ?>
-
+                        
                         </div>
                     </div>
 
